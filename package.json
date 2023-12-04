@@ -1,0 +1,28 @@
+{
+  "name": "decentralized-fs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": "18.17.0"
+  },
+  "scripts": {
+    "be:start": "ts-node ./src/backend/index.ts",
+    "web:dev": "next dev",
+    "web:build": "next build",
+    "web:start": "next start",
+    "web:lint": "next lint"
+  },
+  "repository": "https://github.com/jfrazier-eth/fs.git",
+  "author": "Joe Frazier <54604023+jfrazier-eth@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^14.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "20.10.3",
+    "@types/react": "18.2.41"
+  }
+}
