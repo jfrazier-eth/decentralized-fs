@@ -6,9 +6,9 @@ export const getUser = async (user: { id: string } | { username: string }) => {
   let query: string;
 
   if ("id" in user) {
-    query = `SELECT * from users WHERE id = ${user.id};`;
+    query = `SELECT * from users WHERE id = '${user.id}';`;
   } else {
-    query = `SELECT * from users WHERE username = ${user.username};`;
+    query = `SELECT * from users WHERE username = '${user.username}';`;
   }
 
   return (await pgQueryOne<PGUser>(query)).map(transformPGUser);

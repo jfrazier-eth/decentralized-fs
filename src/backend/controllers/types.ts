@@ -9,6 +9,14 @@ export type GetRequest<ReqQuery = {}> = ExpressRequest<
   unknown,
   ReqQuery
 >;
+
+export type UserGetRequest<ReqQuery = {}> = ExpressRequest<
+  unknown,
+  unknown,
+  unknown,
+  ReqQuery
+>;
+
 export type PostRequest<ReqBody = {}, ReqQuery = {}> = ExpressRequest<
   unknown,
   unknown,
@@ -17,3 +25,8 @@ export type PostRequest<ReqBody = {}, ReqQuery = {}> = ExpressRequest<
 >;
 
 export type CustomResponse<ResBody = never> = ExpressResponse<ResBody>;
+
+export type UserResponse<ResBody = never> = ExpressResponse<
+  ResBody,
+  { username: string }
+>;

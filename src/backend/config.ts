@@ -1,4 +1,5 @@
 import { config as loadEnv } from "dotenv";
+import { decodeWallet } from "./arweave";
 
 const getEnvVariable = (key: string) => {
   const value = process.env[key];
@@ -27,5 +28,8 @@ export const config = {
   },
   server: {
     port: Number(getOptionalEnvVariable("PORT", "8888")),
+  },
+  arweave: {
+    wallet: decodeWallet(getEnvVariable("ARWEAVE_KEY")),
   },
 };

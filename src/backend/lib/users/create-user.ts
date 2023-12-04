@@ -25,9 +25,5 @@ export const createUser = async (
   });
   const insert = pgp.helpers.insert(pgUser, columnSet);
 
-  const result = await pgQuery<never>(insert);
-  if (result.isOk()) {
-    return ok(user);
-  }
-  return err(result.error);
+  return (await pgQuery<never>(insert)).map(() => user);
 };

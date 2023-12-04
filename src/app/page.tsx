@@ -24,6 +24,7 @@ export default function Page() {
         <button
           onClick={() => {
             save(username);
+            setUsername("");
           }}
         >
           Submit
@@ -32,7 +33,11 @@ export default function Page() {
 
       <h2>Sign In</h2>
       {users.map((item) => {
-        return <div key={item.id}>{item.username}</div>;
+        return (
+          <div key={item.id}>
+            <a href={`/user/${item.username}`}>{item.username}</a>
+          </div>
+        );
       })}
     </div>
   );

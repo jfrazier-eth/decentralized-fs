@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { User } from "../../backend/lib/users/types";
 import { API_HOST } from "../constants";
+import { GetUsersResponseBody } from "../../backend/routes/users/types";
 
 export const useUsers = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -19,7 +20,7 @@ export const useUsers = () => {
         if (res.status !== 200) {
           throw new Error(`Failed to get users ${res.statusText}`);
         }
-        return res.json() as Promise<{ data: User[] }>;
+        return res.json() as Promise<GetUsersResponseBody>;
       })
       .then(({ data }) => {
         if (signal.abort) {

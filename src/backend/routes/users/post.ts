@@ -5,9 +5,7 @@ export const post = async (
   request: PostRequest<{ username: string }>,
   response: CustomResponse<string | never>,
 ) => {
-  const username = request.body.username;
-
-  console.log(request.body);
+  const username = request.body.username?.trim?.().toLowerCase?.();
 
   if (!username) {
     return response.status(400).send("Invalid username");
