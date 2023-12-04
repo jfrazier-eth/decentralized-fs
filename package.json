@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
-    "node": "18.17.0"
+    "node": ">=18.17.0"
   },
   "scripts": {
-    "be:start": "ts-node ./src/backend/index.ts",
+    "be:dev": "ts-node ./src/backend/index.ts",
+    "migrate": "ts-node -r dotenv/config node_modules/node-pg-migrate/bin/node-pg-migrate",
     "web:dev": "next dev",
     "web:build": "next build",
     "web:start": "next start",
@@ -16,7 +17,12 @@
   "author": "Joe Frazier <54604023+jfrazier-eth@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^16.3.1",
+    "neverthrow": "^6.1.0",
     "next": "^14.0.3",
+    "node-pg-migrate": "^6.2.2",
+    "pg": "^8.11.3",
+    "pg-promise": "^11.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "ts-node": "^10.9.1"
