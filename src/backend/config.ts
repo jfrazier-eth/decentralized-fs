@@ -16,11 +16,16 @@ const getOptionalEnvVariable = (key: string, defaultValue: string) => {
 let env = getOptionalEnvVariable("ENV", "dev");
 if (env === "prod") {
   loadEnv({ path: ".env.production", override: true });
+} else {
+  loadEnv({ path: ".env" });
 }
 
 export const config = {
   env,
   pg: {
     connectionUrl: getEnvVariable("DATABASE_URL"),
+  },
+  server: {
+    port: Number(getOptionalEnvVariable("PORT", "8888")),
   },
 };
