@@ -7,6 +7,8 @@
   },
   "scripts": {
     "be:dev": "yarn migrate up && ts-node --project tsconfig.backend.json ./src/backend/index.ts",
+    "be:build": "rimraf dist && tsc --project tsconfig.backend.json",
+    "be:start": "yarn build && yarn migrate up && node ./dist/backend/index.js",
     "migrate": "ts-node -r dotenv/config --project tsconfig.backend.json node_modules/node-pg-migrate/bin/node-pg-migrate",
     "web:dev": "next dev",
     "web:build": "next build",
@@ -40,6 +42,7 @@
     "pg-promise": "^11.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.1"
   }
 }
