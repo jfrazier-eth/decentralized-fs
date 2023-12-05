@@ -4,6 +4,7 @@ import { useFiles } from "./useFiles";
 
 import React, { useState } from "react";
 import { API_HOST } from "../../constants";
+import { downloadFile } from "./download";
 
 const FileInput = (props: {
   selectedFile: File | null;
@@ -54,16 +55,54 @@ export default function User() {
       <div>
         <h2>Your files</h2>
         <p>Total files: {files.length}</p>
-        {files.map((item) => {
-          return (
-            <div>
-              <h3>{item.name}</h3>
-              <p>Created {item.createdAt.toString()} </p>
-              <p>Confirmed ?</p>
-              <button onClick={() => {}}>Download</button>
-            </div>
-          );
-        })}
+        {files
+          .sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+          )
+          .map((item) => {
+            return (
+              <div
+                key={item.id}
+                style={{
+                  background: "#fafafa",
+                  margin: "1rem",
+                  padding: "1rem",
+                  border: "1px solid black",
+                  maxWidth: "300px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flex: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <p>{item.name}</p>
+                  <p>Confirmed ?</p>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flex: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <p>{new Date(item.createdAt).toLocaleString()} </p>
+                  <button
+                    onClick={() => {
+                      downloadFile(item);
+                    }}
+                  >
+                    Download
+                  </button>
+                </div>
+              </div>
+            );
+          })}
       </div>
 
       <div>

@@ -3,7 +3,8 @@
     "noEmit": true,
     "outDir": "./dist",
     "module": "commonjs",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "downlevelIteration": true
   },
   "include": ["src/**/*"],
   "exclude": ["./src/app"]

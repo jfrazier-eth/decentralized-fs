@@ -8,19 +8,14 @@ export const post = async (
   response: UserResponse<string | { data: string }>,
 ) => {
   const file = request.file;
-
-  console.log(request.file);
-
-  console.log(`File ${file.originalname}`);
-
   const userResult = await getUser({ username: response.locals.username });
   if (userResult.isErr()) {
     console.log(`User not valid`, userResult.error);
     return response.status(400).send("User not valid");
   }
 
-  const buffer = file.buffer.toString();
-  const uploadResult = await uploadFile(buffer);
+  const rawData = file.buffer.buffer;
+  const uploadResult = await uploadFile(rawData);
   if (uploadResult.isErr()) {
     return response.status(500).send(uploadResult.error.message);
   }
