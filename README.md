@@ -7,6 +7,9 @@
 * Users can view list of all previously uploaded public files
 * Users can download previously uploaded public files
 
+### Implementation
+* User is able to upload files in the UI. The uploaded file is then sent to the server that pays for the transaction and uploads the file to the arweave network. The server stores the transaction id, name of the file, and user that uploaded the file so that the user can view a list of files they have uploaded and download their files from the arweave network.
+
 ## Running Locally
 * `yarn` - install dependencies
 * `docker-compose up` - start the postgres instance
