@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "noEmit": true,
+    "noEmit": false,
     "outDir": "./dist",
     "module": "commonjs",
     "esModuleInterop": true,
