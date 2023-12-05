@@ -6,10 +6,11 @@
     "node": ">=18.17.0"
   },
   "scripts": {
-    "be:dev": "yarn migrate up && ts-node --project tsconfig.backend.json ./src/backend/index.ts",
+    "be:dev": "yarn migrate:dev up && ts-node --project tsconfig.backend.json ./src/backend/index.ts",
     "be:build": "rimraf dist && tsc --project tsconfig.backend.json",
     "be:start": "yarn migrate up && node ./dist/backend/index.js",
-    "migrate": "ts-node -r dotenv/config --project tsconfig.backend.json node_modules/node-pg-migrate/bin/node-pg-migrate",
+    "migrate:dev": "ts-node -r dotenv/config --project tsconfig.backend.json node_modules/node-pg-migrate/bin/node-pg-migrate",
+    "migrate": "ts-node --project tsconfig.backend.json node_modules/node-pg-migrate/bin/node-pg-migrate",
     "web:dev": "next dev",
     "web:build": "next build",
     "web:start": "next start",
