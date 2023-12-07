@@ -93,6 +93,7 @@ export default function User() {
             {files.map((file) => {
               return <FileItem file={file} />;
             })}
+            {files.length === 0 && "No files"}
           </div>
         </div>
       </div>
