@@ -34,16 +34,18 @@ export const downloadFile = async (file: FileMetadata) => {
 
 export const FileItem = ({ file }: { file: FileMetadata }) => {
   return (
-    <button
-      className="rounded-lg border text-card-foreground shadow-sm hover:border hover:border-blue-300"
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        downloadFile(file);
-      }}
+    <div
+      className="rounded-lg border text-card-foreground shadow-sm"
       data-v0-t="card"
     >
-      <div className="p-2 flex flex-row justify-start items-center">
+      <button
+        className="m-2 flex flex-row justify-start items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-background h-8 hover:text-blue-400"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          downloadFile(file);
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="12"
@@ -61,10 +63,10 @@ export const FileItem = ({ file }: { file: FileMetadata }) => {
         <h3 className="ml-4 text-lg leading-none tracking-tight text-center ">
           {file.name}
         </h3>
-      </div>
-      <div className="p-2 flex flex-row justify-between items-center">
+      </button>
+      <div className="p-2 flex flex-row justify-between items-center text-sm">
         <a
-          className="hover:text-blue-400"
+          className="hover:text-blue-500"
           target="_blank"
           href={`https://viewblock.io/arweave/tx/${file.transactionId}`}
         >
@@ -72,6 +74,6 @@ export const FileItem = ({ file }: { file: FileMetadata }) => {
         </a>
         <p>{new Date(file.createdAt).toLocaleString()} </p>
       </div>
-    </button>
+    </div>
   );
 };
